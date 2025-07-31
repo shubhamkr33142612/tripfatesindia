@@ -185,10 +185,11 @@ h6 {
 
 #header #logo img {
     position: absolute;
-    top: -15px;
+    top: -37px;
     padding: 0;
+    left: 66px;
     margin: 0;
-    max-height: 116px;
+    max-height: 215px;
 }
 
 /*--------------------------------------------------------------

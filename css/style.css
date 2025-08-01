@@ -958,6 +958,74 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: scale(1.1);
 }
 
+
+
+/* --------------------------------- */
+/* Container spacing */
+.venue-gallery {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.venue-gallery:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Image styling */
+.venue-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.venue-gallery:hover img {
+  transform: scale(1.05);
+}
+
+/* Row and column spacing override for no-gutters */
+.row.no-gutters {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+}
+
+.row.no-gutters > [class*="col-"] {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+  .venue-gallery {
+    margin: 10px 0;
+  }
+}
+
+.venue-gallery {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.venue-gallery:nth-child(1) { animation-delay: 0s; }
+.venue-gallery:nth-child(2) { animation-delay: 0.1s; }
+.venue-gallery:nth-child(3) { animation-delay: 0.2s; }
+.venue-gallery:nth-child(4) { animation-delay: 0.3s; }
+/* Repeat for more items */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 /*--------------------------------------------------------------
 # Hotels Section
 --------------------------------------------------------------*/
@@ -1059,6 +1127,78 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 4px;
   background: #fff;
   z-index: 1;
+}
+
+
+/* ------------------------------------- */
+.hotel-section {
+  background: #f5f7fa;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hotel-section .section-header h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hotel-section .section-header p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+/* Room Grid */
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* Card Styling */
+.room-card {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Styling */
+.room-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.room-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Room Info Overlay */
+.room-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.room-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #333;
+}
+
+.room-info span {
+  font-size: 14px;
+  color: #777;
 }
 
 /*--------------------------------------------------------------
@@ -1436,7 +1576,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-
+/* 
 #footer {
   background: #101522;
   padding: 0 0 25px 0;
@@ -1581,7 +1721,86 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   font-size: 13px;
   color: #ddd;
+} */
+
+.tf_footer {
+  background: #111;
+  color: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 40px;
 }
+
+.tf_footer-top {
+  padding: 30px 0;
+  border-bottom: 1px solid #333;
+}
+
+.tf_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tf_footer-about,
+.tf_footer-links {
+  flex: 1 1 45%;
+  margin: 10px 0;
+}
+
+.tf_footer-about h3,
+.tf_footer-links h4 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffcc00;
+}
+
+.tf_details {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+
+.tf_details li {
+  font-size: 16px;
+}
+
+.tf_hashtag {
+  color: #58a6ff;
+}
+
+.tf_footer-links .tf_social {
+  margin: 10px 0;
+}
+
+.tf_footer-links .tf_social a {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.tf_footer-links .tf_social a:hover {
+  color: #ffcc00;
+}
+
+.tf_location {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.tf_footer-bottom {
+  text-align: center;
+  background: #000;
+  padding: 15px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+
 
 /*--------------------------------------------------------------
 # Responsive Media Queries

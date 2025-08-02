@@ -480,7 +480,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #intro:before {
   content: "";
-  background: rgba(192, 197, 216,1);
+/*   background: rgba(192, 197, 216,0.5); */
   position: absolute;
   bottom: 0;
   top: 0;

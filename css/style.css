@@ -465,6 +465,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff;
 }
 
+.vbox-container img {
+    height: 90vh !important;
+/*     max-width: 100%; */
+}
+
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/

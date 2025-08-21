@@ -1255,6 +1255,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   z-index: 1;
 }
 
+.gallery-carousel img {
+  height: 300px; /* Adjust as per your design */
+  object-fit: cover; /* Crops image to fit without distortion */
+  border-radius: 8px; /* optional for rounded corners */
+}
+
+
 /*--------------------------------------------------------------
 # supporters Section
 --------------------------------------------------------------*/

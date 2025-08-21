@@ -480,7 +480,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #intro:before {
   content: "";
-  background: rgba(192, 197, 216, 0.5);
+/*   background: rgba(192, 197, 216,0.5); */
   position: absolute;
   bottom: 0;
   top: 0;
@@ -519,10 +519,18 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-transform: uppercase;
 }
 
-#intro h1 span {
+/* #intro h1 span {
   color: #22b4f8;
+} */
+.shtextclrblue{
+    color: #22b4f8;
 }
-
+.shtextclrgreen{
+    color: #008000;
+}
+.shtextclrorg{
+    color: #ffa500;
+}
 #intro p {
   color: #ebebeb;
   font-weight: 700;

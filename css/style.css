@@ -1,7 +1,46 @@
 /*
   Theme Name: TheEvent (Customized for TripFates India)
 */
-
+/* ===== CSS VARIABLES (Color System) ===== */
+:root {
+  --primary: #22b4f8;
+  --primary-dark: #0e1b4d;
+  --accent: #ffa500;
+  --success: #10b981;
+  --danger: #ef4444;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  
+  /* Typography */
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Sora", sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-base: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+  
+  /* Transitions */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 350ms;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -291,7 +330,7 @@ h6 {
   width: 100%;
 }
 
-.nav-menu li.buy-tickets a {
+/* .nav-menu li.buy-tickets a {
   color: #fff;
   background: #22b4f8;
   padding: 7px 22px;
@@ -308,7 +347,7 @@ h6 {
 .nav-menu li.buy-tickets a:hover {
   background: none;
   color: #22b4f8;
-}
+} */
 
 .nav-menu li.buy-tickets:hover a:before,
 .nav-menu li.buy-tickets.menu-active a:before {
@@ -718,6 +757,219 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 20px;
   color: #fff;
 }
+
+.buy-tickets a {
+  background: #25D366;
+  color: white !important;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.buy-tickets a:hover {
+  background: #1ebe5d;
+}
+
+
+/* ===== DESTINATION CARDS ===== */
+/* ===== SECTION TITLE / SUBTITLE ===== */
+.section-title {
+  font-family: var(--font-secondary, "Raleway", sans-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.section-subtitle {
+  font-size: 0.98rem;
+  color: var(--text-light);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Section spacing */
+.section-padding {
+  padding: var(--spacing-3xl) 0;
+  background-color: var(--bg-light);
+}
+
+/* ===== DESTINATIONS GRID ===== */
+.destinations-row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+#destinations {
+    background: linear-gradient(180deg, #e9f5ff 0%, #d7ecff 50%, #ffffff 100%);
+}
+
+.destinations-row > [class*="col-"] {
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-bottom: 24px;
+}
+
+/* ===== BADGE / TAG ===== */
+.destination-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 5;
+  display: inline-block;
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-base) var(--easing);
+}
+
+/* Slight scale + shadow on hover */
+.destination-card:hover .destination-badge {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-xl);
+}
+
+
+@media (min-width: 992px) {
+  .destinations-row > [class*="col-"] {
+    margin-bottom: 32px;
+  }
+}
+
+/* ===== DESTINATION CARDS ===== */
+.destination-card {
+  background: var(--bg-white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--duration-base) var(--easing),
+              box-shadow var(--duration-base) var(--easing);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.destination-image {
+  position: relative;
+  overflow: hidden;
+  height: 230px;
+}
+
+.destination-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--easing);
+}
+
+.destination-card:hover .destination-image img {
+  transform: scale(1.08);
+}
+
+.destination-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(14, 27, 77, 0.82) 0%, rgba(34, 180, 248, 0.55) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--easing);
+  padding: 0 var(--spacing-base);
+}
+
+.destination-card:hover .destination-overlay {
+  opacity: 1;
+}
+
+.destination-overlay h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.destination-overlay p {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.8rem;
+}
+
+/* Card body */
+.destination-content {
+  padding: var(--spacing-lg);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-content h4 {
+  font-size: 1.05rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.destination-content p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+/* CTA link */
+.btn-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.02em;
+}
+
+.btn-link::after {
+  content: "→";
+  font-size: 0.95em;
+  transform: translateX(0);
+  transition: transform var(--duration-base) var(--easing);
+}
+
+.destination-card:hover .btn-link::after {
+  transform: translateX(4px);
+}
+
+.btn-link:hover {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+/* Mobile tweaks */
+@media (max-width: 575.98px) {
+  .destination-image {
+    height: 210px;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Venue Section + Carded Gallery

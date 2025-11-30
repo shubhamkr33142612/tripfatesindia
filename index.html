@@ -88,6 +88,36 @@
     </div>
   </section>
 
+<!-- Counters on top of video -->
+<!-- Stats overlay -->
+<div class="intro-stats" id="introStats">
+  <div class="intro-stats-inner">
+
+    <div class="stat">
+      <div class="stat-value" data-target="3200" data-suffix="+">0</div>
+      <div class="stat-label">Happy Travelers</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-value" data-target="150" data-suffix="+">0</div>
+      <div class="stat-label">Destinations</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-value" data-target="9" data-suffix="+">0</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-value" data-target="98" data-suffix="%">0</div>
+      <div class="stat-label">Satisfaction Rate</div>
+    </div>
+
+  </div>
+</div>
+
+
+
   <main id="main">
 
     <!--==========================
@@ -720,6 +750,149 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+<style>
+  #intro {
+  position: relative; /* important for absolute overlay */
+  overflow: hidden;
+}
+
+/* Overlay wrapper */
+.intro-stats {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;                     /* lift it a bit from bottom */
+  width: 100%;
+  pointer-events: none;             /* click-through, doesn't block buttons/chat */
+}
+
+/* Glass panel */
+.intro-stats-inner {
+  pointer-events: auto;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 16px 32px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35)
+  );
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Each stat */
+.stat {
+  flex: 1;
+  text-align: center;
+  min-width: 150px;
+}
+
+/* Number */
+.stat-value {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  color: #ffd84a;                 /* warm yellow – pops on video */
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+}
+
+/* Label */
+.stat-label {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .intro-stats-inner {
+    bottom: 24px;
+    padding: 14px 20px;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat {
+    flex: 0 0 45%;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro-stats-inner {
+    gap: 16px;
+  }
+  .stat {
+    flex: 0 0 48%;
+  }
+  .stat-value {
+    font-size: 1.8rem;
+  }
+  .stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+
+</style>
+<script>
+
+(function () {
+  const values = document.querySelectorAll(".stat-value");
+  if (!values.length) return;
+
+  function animateValue(el) {
+    const target = parseInt(el.getAttribute("data-target"), 10);
+    const suffix = el.getAttribute("data-suffix") || "";
+    const duration = 1600;
+    const start = performance.now();
+
+    function frame(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const current = Math.floor(progress * target);
+      el.textContent = current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Start when stats bar becomes visible
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          values.forEach(el => {
+            if (!el.dataset.animated) {
+              el.dataset.animated = "true";
+              animateValue(el);
+            }
+          });
+          obs.disconnect();
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  observer.observe(document.getElementById("introStats"));
+})();
+</script>
 </body>
 
 </html>

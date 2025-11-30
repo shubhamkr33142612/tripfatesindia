@@ -1948,10 +1948,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 
   #intro h1 {
     font-size: 34px;
+    top: 69px;
+    position: absolute;
   }
 
   #intro p {
     font-size: 16px;
+    top: 181px;
+    position: absolute;
+  }
+  #intro .play-btn {
+    top: 250px;
+    position: absolute;
+  }
+  #intro .about-btn {
+    top: 353px;
+    position: absolute;
   }
 
   #schedule .nav-tabs a {
